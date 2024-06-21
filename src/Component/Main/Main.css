@@ -1,0 +1,165 @@
+.main {
+  flex: 1;
+  padding: 20px;
+  max-height: 100vh;
+  padding-bottom: 3px;
+  display: grid;
+  grid-template-rows: auto 1fr auto auto;
+}
+
+.Gemini {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  font-size: 1.3rem;
+}
+
+.Gemini img {
+  width: 40px;
+  border-radius: 50%;
+}
+
+.Mainheader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 20px 0px;
+  max-height: calc(100vh - 176.6px);
+}
+
+.Mainheader::-webkit-scrollbar {
+  width: 0;
+}
+
+.Mainheader > div {
+  min-width: 900px;
+  max-width: 900px;
+}
+
+.Mainheader > div .User {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.Mainheader > div .User p {
+  padding: 5px 15px 30px 30px;
+  line-height: 26px;
+}
+
+.Mainheader > div .User img {
+  width: 30px;
+  border-radius: 50px;
+}
+
+.Mainheader > div .GeminiAI {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.Mainheader > div .GeminiAI p {
+  padding: 5px 40px 30px 15px;
+  line-height: 26px;
+}
+
+.Mainheader > div .GeminiAI img {
+  width: 40px;
+}
+
+.Mainheader .QNA {
+  box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3),
+    -10px -10px 15px rgba(255, 255, 255, 0.3);
+  padding: 20px;
+  max-height: 100%;
+  overflow-y: scroll;
+}
+
+.Mainheader .QNA::-webkit-scrollbar {
+  width: 0;
+}
+
+.intro {
+  font-size: 3.5rem;
+  font-weight: 500;
+  margin-bottom: 75px;
+}
+
+.intro p:first-child {
+  background: -webkit-linear-gradient(88deg, #4b90ff, #fc5748);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.intro p:last-child {
+  color: rgb(205, 205, 205);
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.cards > div {
+  background-color: #f0f4f9;
+  border-radius: 20px;
+  aspect-ratio: 1/1;
+  padding: 18px 15px;
+  position: relative;
+}
+
+.cards > div .icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: white;
+  border-radius: 50px;
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cards > div .icon img {
+  width: 30px;
+}
+
+.searchbar {
+  display: flex;
+  justify-content: center;
+}
+
+.searchbar > div {
+  display: flex;
+  padding: 0% 12px;
+  max-width: 1000px;
+  border-radius: 25px;
+  min-width: 900px;
+  align-items: center;
+  background-color: #f0f4f9;
+  bottom: 10px;
+}
+
+.searchbar > div > input {
+  flex: 1;
+  border: none;
+  outline: none;
+  padding: 12px;
+  background-color: transparent;
+  font-size: 1rem;
+}
+
+.searchbar img {
+  margin: 0 3px;
+  width: 20px;
+  cursor: pointer;
+}
+
+.footer {
+  margin-top: 10px;
+  text-align: center;
+  min-width: 900px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
