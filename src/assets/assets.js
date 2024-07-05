@@ -13,7 +13,11 @@ import message_icon from './message_icon.png'
 import code_icon from './code_icon.png'
 import send_icon from './send_icon.png'
 import gemini_icon from './gemini_icon.png'
-
+import Speaker_Icon from './Speaker_Icon.svg'
+import stop_icon from './stop_icon.png'
+import refresh_icon from './refresh_icon.png'
+import copy_icon from './copy_icon.png'
+import check_icon from './check_icon.png'
 export const assets = {
     history_icon,
     menu_icon,
@@ -29,5 +33,10 @@ export const assets = {
     message_icon,
     code_icon,
     send_icon,
-    gemini_icon
+    gemini_icon,
+    Speaker_Icon,
+    stop_icon,
+    refresh_icon,
+    copy_icon,
+    check_icon
 }

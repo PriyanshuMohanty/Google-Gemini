@@ -23,9 +23,9 @@
 .Mainheader {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin: 10px 0 20px 0px;
-  max-height: calc(100vh - 176.6px);
+  align-items: flex-start;
+  margin: 25px 0 20px 0px;
+  max-height: calc(100vh - 191.6px);
 }
 
 .Mainheader::-webkit-scrollbar {
@@ -40,16 +40,25 @@
 .Mainheader > div .User {
   display: flex;
   justify-content: flex-end;
+}
+
+.Mainheader > div .User > div {
+  display: inline-flex;
+  justify-content: flex-end;
   align-items: flex-start;
+  margin-bottom: 25px;
+  background-color: #e6eaf1;
+  border-radius: 20px;
 }
 
 .Mainheader > div .User p {
-  padding: 5px 15px 30px 30px;
+  padding: 7px 15px 7px 30px;
   line-height: 26px;
 }
 
 .Mainheader > div .User img {
   width: 30px;
+  margin: 5px 10px 5px 0;
   border-radius: 50px;
 }
 
@@ -57,17 +66,54 @@
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
+  position: relative;
 }
 
-.Mainheader > div .GeminiAI p {
+.Mainheader > div .GeminiAI .geminiResponse {
   padding: 5px 40px 30px 15px;
   line-height: 26px;
+}
+
+.Mainheader > div .GeminiAI .geminiResponse .codeCopy {
+  margin: 10px 0;
+}
+
+.Mainheader > div .GeminiAI .geminiResponse .codeCopy > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #d0d3d7;
+  padding: 4px 20px;
+  border-radius: 12px 12px 0 0;
+  font-size: 0.8rem;
+}
+
+.Mainheader > div .GeminiAI .geminiResponse .codeCopy > div .copyButton {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Mainheader > div .GeminiAI .geminiResponse .codeCopy > div .copyButton img {
+  width: 15px;
+  margin-right: 2px;
+}
+
+.Mainheader > div .GeminiAI .geminiResponse .codeCopy pre {
+  background-color: #f0f4f9;
+  padding: 12px;
+  border-radius: 0 0 12px 12px;
 }
 
 .Mainheader > div .GeminiAI img {
   width: 40px;
 }
 
+.Mainheader .responsefeatures {
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
 .Mainheader .QNA {
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3),
     -10px -10px 15px rgba(255, 255, 255, 0.3);
@@ -80,6 +126,18 @@
   width: 0;
 }
 
+.Mainheader > div .GeminiAI .responsefeatures img {
+  width: 20px;
+  margin: 5px;
+  padding: 3px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.Mainheader > div .GeminiAI .responsefeatures img:hover {
+  background-color: rgb(226, 226, 226);
+}
+
 .intro {
   font-size: 3.5rem;
   font-weight: 500;
@@ -89,6 +147,7 @@
 .intro p:first-child {
   background: -webkit-linear-gradient(88deg, #4b90ff, #fc5748);
   -webkit-text-fill-color: transparent;
+  background-clip: text;
   -webkit-background-clip: text;
 }
 
@@ -133,7 +192,6 @@
 .searchbar > div {
   display: flex;
   padding: 0% 12px;
-  max-width: 1000px;
   border-radius: 25px;
   min-width: 900px;
   align-items: center;
@@ -162,4 +220,11 @@
   min-width: 900px;
   font-size: 0.8rem;
   font-weight: bold;
+}
+
+.Mainheader > div .GeminiAI .geminiResponse pre:has([class^="language-"]) {
+  background-color: #f0f4f9;
+  padding: 12px;
+  border-radius: 0 0 12px 12px;
+  width: 100%;
 }

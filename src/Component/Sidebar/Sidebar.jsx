@@ -1,52 +1,66 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Sidebar.css";
 import { assets } from '../../assets/assets';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import GeminiCall from '../../Custon Hook/GeminiCall';
+import { setRecentPrompt } from '../../store/promptSlice';
 
 function Sidebar() {
 
+    const [hamburgar, setHamburger] = useState(true)
     const { prompts } = useSelector((state) => state.prompts);
+    const dispatch = useDispatch()
+    const gemini = GeminiCall()
+
 
     return (
-        <div className='sidebar'>
+        <div className={`sidebar ${!hamburgar ? "hamburgar" : ""}`} >
             <div className='sidebarTop'>
-                <div className='menu_icon'>
-                    <img src={assets.menu_icon} alt="" />
+                <div
+                    className={`menu_icon ${hamburgar ? "change" : ""}`}
+                    onClick={() => setHamburger((prev) => !prev)}
+                >
+                    <div className="bar1"></div>
+                    <div className="bar2"></div>
+                    <div className="bar3"></div>
                 </div>
-                <div className='newChat iconText'>
+                <div
+                    className='newChat iconText'
+                    onClick={() => dispatch(setRecentPrompt(""))}
+                >
                     <img src={assets.plus_icon} alt="" />
-                    <p>New Chat</p>
+                    {hamburgar && <p>New Chat</p>}
                 </div>
-                <div className='recent'>
+                {hamburgar && <div className='recent'>
                     <div className='recentHeading'>Recent</div>
                     <div>
                         {prompts.map((prompt) => (
-                            <div className='iconText' key={prompt}>
+                            <div className='iconText' key={prompt} onClick={() => { gemini(prompt) }}>
                                 <img src={assets.message_icon} alt="" />
-                                <p>{prompt}</p>
+                                <p>{prompt.length > 15 ? prompt.slice(0, 15) + "..." : prompt}</p>
                             </div>
                         ))
 
                         }
 
                     </div>
-                </div>
+                </div>}
             </ div>
             <div className='sidebarBottom'>
 
                 <div className='iconText'>
                     <img src={assets.question_icon} alt="" />
-                    <p>Help</p>
+                    {hamburgar && <p>Help</p>}
                 </div>
 
                 <div className='iconText'>
                     <img src={assets.history_icon} alt="" />
-                    <p>Activity</p>
+                    {hamburgar && <p>Activity</p>}
                 </div>
 
                 <div className='iconText'>
                     <img src={assets.setting_icon} alt="" />
-                    <p>Setting</p>
+                    {hamburgar && <p>Setting</p>}
                 </div>
 
             </div>
