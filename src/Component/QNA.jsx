@@ -38,16 +38,39 @@ function QNA() {
     useEffect(() => {
         setRespones("")
         setComplatedResponse(false)
-
+        let code = false
+        const QNA = QNARef.current
         const responesArr = geminiResponse.split(" ");
         let timeoutIds = [];
+
         for (let i = 0; i < responesArr.length; i++) {
             const timeoutId = setTimeout(() => {
                 setRespones((prev) => `${prev}${responesArr[i]} `)
                 if (i === responesArr.length - 1 && i !== 0) {
                     setComplatedResponse(true)
                 }
-                QNARef.current.scrollTop = QNARef.current.scrollHeight
+
+                if (i > 1) {
+                    if (responesArr[i].includes("```\n")) {
+                        code = false
+                        QNA.scrollTop = QNA.scrollHeight
+                    }
+                    else if (responesArr[i - 1].includes("```")) {
+                        code = true
+                        QNA.scrollTop = QNA.scrollHeight
+                    }
+
+                    if (!code) {
+                        if (QNA.scrollHeight - QNA.scrollTop < (QNA.offsetHeight + 27)) {
+                            QNA.scrollTop = QNA.scrollHeight
+                        }
+                    } else {
+                        if (QNA.scrollHeight - QNA.scrollTop < (QNA.offsetHeight + 150)) {
+                            QNA.scrollTop = QNA.scrollHeight
+                        }
+                    }
+                }
+
             }, i * 100)
             timeoutIds.push(timeoutId)
         }

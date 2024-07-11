@@ -6,6 +6,7 @@ import Navbar from "./Navbar";
 import QNA from "./QNA";
 import SearchBar from "./SearchBar";
 import Card from "./Card";
+import HoverPopup from "./HoverPopup";
 
 export {
     Main,
@@ -15,5 +16,6 @@ export {
     Navbar,
     SearchBar,
     Mainheader,
-    Footer
+    Footer,
+    HoverPopup
 }
