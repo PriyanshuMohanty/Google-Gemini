@@ -8,7 +8,7 @@ function Mainheader() {
             <div>
                 <div className='intro'>
                     <p>Hello, Dev</p>
-                    <p>How can i help you today ?</p>
+                    <p>How can i help you today?</p>
                 </div>
                 <div className='cards'>
                     <Card cardPrompt={`suggest beautiful place to see on an upcoming road trip`} cardIcon={assets.compass_icon} />

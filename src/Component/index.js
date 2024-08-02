@@ -7,6 +7,9 @@ import QNA from "./QNA";
 import SearchBar from "./SearchBar";
 import Card from "./Card";
 import HoverPopup from "./HoverPopup";
+import Profile from "./UserProfile/Profile";
+import Hamburger from "./Hamburger";
+import Location from "./Location";
 
 export {
     Main,
@@ -17,5 +20,8 @@ export {
     SearchBar,
     Mainheader,
     Footer,
-    HoverPopup
+    HoverPopup,
+    Profile,
+    Hamburger,
+    Location
 }

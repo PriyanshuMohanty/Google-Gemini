@@ -6,24 +6,22 @@ function useLocation() {
     const [longitude, setLongitude] = useState(null)
     const [error, setError] = useState('')
 
-    useEffect(() => {
-        if ('geolocation' in navigator) {
-            navigator.geolocation.getCurrentPosition(
-                (position) => {
-                    setLatitude(position.coords.latitude)
-                    setLongitude(position.coords.longitude)
-                    setError(null)
-                    console.log(latitude)
-                    console.log(longitude)
-                },
-                (error) => {
-                    setError(error.message)
-                }
-            );
-        } else {
-            setError('geolocation is not supported by this browser');
-        }
-    })
+        ; (() => {
+            if ('geolocation' in navigator) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        setLatitude(position.coords.latitude)
+                        setLongitude(position.coords.longitude)
+                        setError(null)
+                    },
+                    (error) => {
+                        setError(error.message)
+                    }
+                );
+            } else {
+                setError('geolocation is not supported by this browser');
+            }
+        })();
 
     useEffect(() => {
         ; (async () => {
@@ -33,7 +31,7 @@ function useLocation() {
                 if (FetchApi.ok) {
                     const response = await FetchApi.json()
                     setLocation(response)
-                    console.log(response)
+
                 }
                 else {
                     setError("404 api bad respect")

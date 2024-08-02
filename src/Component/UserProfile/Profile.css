@@ -1,0 +1,157 @@
+.profile {
+  position: absolute;
+  background-color: #e6eaf1;
+  top: 60px;
+  right: 0px;
+  z-index: 999;
+  border-radius: 30px;
+  padding: 12px;
+  color: #1f1f1f;
+  font-family: "Noto Sans", sans-serif;
+}
+
+.profile .closeProfile {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 12px;
+  user-select: none;
+}
+
+.profile .closeProfile:hover {
+  background-color: #dce2ea;
+  border-radius: 25px;
+}
+
+.profile .userEmail {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.profile .profileContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.profile .profileContainer .profileImg {
+  position: relative;
+}
+
+.profile .profileContainer .profileImg > img {
+  width: 85px;
+}
+
+.profile .profileImg .profileImgEdit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 4px;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.profile .profileContainer .profileImg .profileImgEdit:hover {
+  background-color: #d3d9e1;
+}
+
+.profile .profileContainer .profileImg .profileImgEdit img {
+  width: 15px;
+}
+
+.profile .profileContainer .greetUser {
+  font-weight: 400;
+  margin: 8px 0;
+}
+
+.profile .profileContainer .manageAccount {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.profile .profileContainer .manageAccount span {
+  display: inline-block;
+  cursor: pointer;
+  padding: 8px 22px;
+  border: 0.8px solid black;
+  color: blue;
+  border-radius: 25px;
+}
+
+.profile .userMenuContainer > div {
+  background-color: #f8fafd;
+  margin: 2px;
+  padding: 12px;
+  width: 380px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.profile .userMenuContainer > div:first-child {
+  border-radius: 25px 25px 0 0;
+}
+
+.profile .userMenuContainer > div:last-child {
+  border-radius: 0 0 25px 25px;
+}
+
+.profile .userMenuContainer img {
+  width: 25px;
+  margin: 0 17px;
+}
+
+.profile .userMenuContainer h2 {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.profile .userMenuContainer .userAccount img {
+  width: 35px;
+  margin: 0 12px;
+}
+
+.profile .userMenuContainer .userAccount p {
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.profile .profilefooter {
+  margin: 20px 0 8px;
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 400;
+}
+
+.profile .profilefooter span {
+  cursor: pointer;
+}
+
+.profile .profilefooter span:nth-child(2) {
+  margin: 0 12px;
+  cursor: default;
+}
+
+@media (max-width: 460px) {
+  .profile {
+    min-height: 100vh;
+    min-width: 100vw;
+    top: 0;
+    border-radius: 0;
+  }
+
+  .profile .userMenuContainer > div {
+    width: 100%;
+  }
+
+  .profile .profilefooter {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+  }
+}

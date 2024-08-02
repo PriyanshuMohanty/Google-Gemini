@@ -3,7 +3,17 @@ import { assets } from '../assets/assets'
 import { useDispatch, useSelector } from 'react-redux'
 import { newPrompt } from '../store/promptSlice'
 import GeminiCall from '../Custon Hook/GeminiCall'
+import styled from 'styled-components';
 
+const Mic = styled.span`
+    @media (max-width:460px){
+        display:none;
+    }`
+
+const Micphone = styled.span`
+    @media (min-width:460px){
+        display:none;
+    }`
 
 function SearchBar() {
 
@@ -28,12 +38,22 @@ function SearchBar() {
 
                 />
                 <img src={assets.gallery_icon} alt="" />
-                <img src={assets.mic_icon} alt="" />
-                {prompt && <img
-                    src={assets.send_icon}
-                    alt="send button"
-                    onClick={() => gemini(prompt)}
-                />}
+
+                <Mic>
+                    <img src={assets.mic_icon} alt="" />
+                </Mic>
+
+                {prompt ?
+                    (<img
+                        src={assets.send_icon}
+                        alt="send button"
+                        onClick={() => gemini(prompt)}
+                    />)
+                    :
+                    (<Micphone>
+                        <img src={assets.mic_icon} alt="" />
+                    </Micphone>)
+                }
             </div>
         </div>
     )

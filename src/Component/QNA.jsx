@@ -10,6 +10,7 @@ function QNA() {
     const { recentPrompt, geminiResponse } = useSelector((state) => state.prompts)
     const [speaking, setspeaking] = useState(false)
     const [respones, setRespones] = useState("")
+    const [code, setcode] = useState(false)
     const [complateResponse, setComplatedResponse] = useState(false)
     const GeminiRef = useRef("")
     const QNARef = useRef("")
@@ -37,9 +38,9 @@ function QNA() {
 
     useEffect(() => {
         setRespones("")
+        setcode(false)
         setComplatedResponse(false)
-        let code = false
-        const QNA = QNARef.current
+
         const responesArr = geminiResponse.split(" ");
         let timeoutIds = [];
 
@@ -51,23 +52,10 @@ function QNA() {
                 }
 
                 if (i > 1) {
-                    if (responesArr[i].includes("```\n")) {
-                        code = false
-                        QNA.scrollTop = QNA.scrollHeight
-                    }
-                    else if (responesArr[i - 1].includes("```")) {
-                        code = true
-                        QNA.scrollTop = QNA.scrollHeight
-                    }
-
-                    if (!code) {
-                        if (QNA.scrollHeight - QNA.scrollTop < (QNA.offsetHeight + 27)) {
-                            QNA.scrollTop = QNA.scrollHeight
-                        }
+                    if (responesArr[i - 2].includes("```") || responesArr[i - 1].includes("```") || responesArr[i].includes("```") || responesArr[i + 1].includes("```") || responesArr[i + 2].includes("```")) {
+                        setcode((prev) => !prev)
                     } else {
-                        if (QNA.scrollHeight - QNA.scrollTop < (QNA.offsetHeight + 150)) {
-                            QNA.scrollTop = QNA.scrollHeight
-                        }
+                        setcode(false)
                     }
                 }
 
@@ -80,6 +68,28 @@ function QNA() {
         }
     }, [geminiResponse])
 
+    useEffect(() => {
+        const QNA = QNARef.current
+        let timeoutId;
+        if (!complateResponse) {
+            if (!code) {
+                timeoutId = setInterval(() => {
+                    if (QNA.scrollHeight - QNA.scrollTop <= (QNA.offsetHeight + 52)) {
+                        QNA.scrollTop = QNA.scrollHeight
+                    }
+                }, 300)
+            }
+            else {
+                if (QNA.scrollHeight - QNA.scrollTop <= (QNA.offsetHeight + 100)) {
+                    QNA.scrollTop = QNA.scrollHeight
+                }
+            }
+        }
+
+        return () => {
+            clearInterval(timeoutId)
+        }
+    }, [geminiResponse, complateResponse, code])
     return (
         <>
             <div className='QNA' ref={QNARef}>
